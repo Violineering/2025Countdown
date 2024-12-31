@@ -55,9 +55,19 @@
             z-index: 2;
         }
 
+        .slideshow-container {
+            position: relative;
+            width: 80%;
+            height: 400px; /* Fixed height for the slideshow */
+            margin-top: 40px;
+            z-index: 1;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+        }
 
         .slides {
-            display: block; /* Make sure all images are shown */
+            display: none;
             position: absolute;
             width: 100%;
             height: 100%;
@@ -65,7 +75,8 @@
 
         .slides img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             border-radius: 10px;
         }
 
@@ -90,21 +101,21 @@
     <!-- Countdown Timer -->
     <div id="countdown">Loading...</div>
 
-    <!-- Slideshow (only 1 image for testing) -->
-    
+    <!-- Slideshow Container -->
+    <div class="slideshow-container">
         <div class="slides">
-            <img src="family1.jpg" alt="Image">
+            <img src="family1.jpg" alt="Image 1">
         </div>
         <div class="slides">
-            <img src="family2.jpg" alt="Image">
+            <img src="family2.jpg" alt="Image 2">
         </div>
         <div class="slides">
-            <img src="family3.jpg" alt="Image">
+            <img src="family3.jpg" alt="Image 3">
         </div>
         <div class="slides">
-            <img src="family4.jpg" alt="Image">
+            <img src="family4.jpg" alt="Image 4">
         </div>
-    
+    </div>
 
     <footer>&copy; 2024 - Happy New Year!</footer>
 
@@ -137,7 +148,31 @@
         // Start Countdown
         window.onload = () => {
             countdownToNewYear();
+            startSlideshow();
         };
+
+        // Slideshow Functionality
+        let slideIndex = 0;
+        function startSlideshow() {
+            const slides = document.querySelectorAll(".slides");
+            const totalSlides = slides.length;
+
+            // Function to show the next image in the slideshow
+            function showSlides() {
+                for (let i = 0; i < totalSlides; i++) {
+                    slides[i].style.display = "none";  // Hide all slides
+                }
+                slideIndex++;
+                if (slideIndex > totalSlides) {
+                    slideIndex = 1; // Reset to first image after the last one
+                }
+                slides[slideIndex - 1].style.display = "block";  // Show current slide
+
+                setTimeout(showSlides, 3000); // Change image every 3 seconds
+            }
+
+            showSlides(); // Start the slideshow
+        }
     </script>
 </body>
 </html>
