@@ -36,11 +36,11 @@
         }
 
         header {
-            font-size: 8rem; /* Larger text size */
+            font-size: 4rem; /* Larger text size */
             font-weight: bold;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #ffcc99; /* Gold text color */
+            color: gold; /* Gold text color */
             margin-bottom: 20px; /* Space between header and countdown */
             z-index: 2;
         }
@@ -49,7 +49,7 @@
             font-size: 6rem; /* Larger countdown timer */
             font-weight: bold;
             letter-spacing: 1px;
-            color: white; /* Peach color */
+            color: #ffcc99; /* Peach color */
             text-align: center;
             margin-top: 40px;
             z-index: 2;
@@ -57,16 +57,18 @@
 
         .slideshow-container {
             position: relative;
+            width: 100%;
             max-width: 80%;
             margin: 40px auto;
             overflow: hidden;
             border-radius: 10px;
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
             z-index: 1;
+            background: rgba(0,0,0,0.4); /* Light black background for visibility */
         }
 
         .slides {
-            display: block; /* Show all images */
+            display: block; /* Make sure all images are shown */
             position: absolute;
             width: 100%;
             height: 100%;
